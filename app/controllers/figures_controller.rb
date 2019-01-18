@@ -18,11 +18,11 @@ class FiguresController < ApplicationController
       params["figure"]["title_ids"].each do |id|
        @figure.titles << Title.find(id)
       end
-      
+
     elsif !params["title"]["name"].empty?
       @figure.titles << Title.create(name: params["title"]["name"])
     end
-    
+
     if params["figure"]["landmark_ids"]
       params["figure"]["landmark_ids"].each do |id|
        @figure.landmarks << Landmark.find(id)
@@ -31,7 +31,7 @@ class FiguresController < ApplicationController
     elsif !params["landmark"]["name"].empty?
       @figure.landmarks << Landmark.create(name: params["landmark"]["name"])
     end
-    
+
     @figure.save
     redirect "/figures/#{@figure.id}"
   end
@@ -53,7 +53,7 @@ class FiguresController < ApplicationController
        @figure.titles << Title.find(id)
       end
     end
-    
+
   if !params["title"]["name"].empty?
       @figure.titles << Title.create(name: params["title"]["name"])
     end
@@ -64,11 +64,11 @@ class FiguresController < ApplicationController
        @figure.landmarks << Landmark.find(id)
       end
     end
-    
+
     if !params["landmark"]["name"].empty?
       @figure.landmarks << Landmark.create(name: params["landmark"]["name"])
     end
-    
+
     @figure.save
     redirect "/figures/#{@figure.id}"
   end
